@@ -10,8 +10,6 @@ const { SuccessResponse, ErrorResponse } = require('../utils/common');
  */
 async function signup(req, res) {
     try {
-        console.log(`AuthRequestMiddlewares.validateAuthRequest` , req )
-        
         const user = await UserService.create({
             email: req.body.email,
             password: req.body.password
