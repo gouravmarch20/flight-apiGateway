@@ -5,16 +5,16 @@ const { ServerConfig } = require('../../config');
 function checkPassword(plainPassword, encryptedPassword) {
     try {
         return bcrypt.compareSync(plainPassword, encryptedPassword);
-    } catch(error) {
-        console.log(error);
+    } catch (error) {
+        console.log("checkP", error);
         throw error;
     }
 }
 
 function createToken(input) {
     try {
-        return jwt.sign(input, ServerConfig.JWT_SECRET, {expiresIn: ServerConfig.JWT_EXPIRY});
-    } catch(error) {
+        return jwt.sign(input, ServerConfig.JWT_SECRET, { expiresIn: ServerConfig.JWT_EXPIRY });
+    } catch (error) {
         console.log(error);
         throw error;
     }
@@ -23,7 +23,7 @@ function createToken(input) {
 function verifyToken(token) {
     try {
         return jwt.verify(token, ServerConfig.JWT_SECRET);
-    } catch(error) {
+    } catch (error) {
         console.log(error);
         throw error;
     }
